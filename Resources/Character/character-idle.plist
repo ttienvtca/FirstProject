@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>frames</key>
+    <dict>
+      <key>character-idle (1)</key>
+      <dict>
+        <key>frame</key>
+        <string>{{0,0},{18,33}}</string>
+        <key>offset</key>
+        <string>{-7.5,-4.5}</string>
+        <key>rotated</key>
+        <false/>
+        <key>sourceColorRect</key>
+        <string>{{18,10},{18,33}}</string>
+        <key>sourceSize</key>
+        <string>{69,44}</string>
+      </dict>
+      <key>character-idle (2)</key>
+      <dict>
+        <key>frame</key>
+        <string>{{0,33},{18,33}}</string>
+        <key>offset</key>
+        <string>{-7.5,-4.5}</string>
+        <key>rotated</key>
+        <false/>
+        <key>sourceColorRect</key>
+        <string>{{18,10},{18,33}}</string>
+        <key>sourceSize</key>
+        <string>{69,44}</string>
+      </dict>
+      <key>character-idle (3)</key>
+      <dict>
+        <key>frame</key>
+        <string>{{0,66},{20,32}}</string>
+        <key>offset</key>
+        <string>{-7.5,-5}</string>
+        <key>rotated</key>
+        <false/>
+        <key>sourceColorRect</key>
+        <string>{{17,11},{20,32}}</string>
+        <key>sourceSize</key>
+        <string>{69,44}</string>
+      </dict>
+      <key>character-idle (6)</key>
+      <dict>
+        <key>frame</key>
+        <string>{{18,0},{18,32}}</string>
+        <key>offset</key>
+        <string>{-7.5,-5}</string>
+        <key>rotated</key>
+        <false/>
+        <key>sourceColorRect</key>
+        <string>{{18,11},{18,32}}</string>
+        <key>sourceSize</key>
+        <string>{69,44}</string>
+      </dict>
+      <key>character-idle (4)</key>
+      <dict>
+        <key>frame</key>
+        <string>{{18,32},{20,31}}</string>
+        <key>offset</key>
+        <string>{-7.5,-5.5}</string>
+        <key>rotated</key>
+        <false/>
+        <key>sourceColorRect</key>
+        <string>{{17,12},{20,31}}</string>
+        <key>sourceSize</key>
+        <string>{69,44}</string>
+      </dict>
+      <key>character-idle (5)</key>
+      <dict>
+        <key>frame</key>
+        <string>{{36,0},{18,31}}</string>
+        <key>offset</key>
+        <string>{-7.5,-5.5}</string>
+        <key>rotated</key>
+        <false/>
+        <key>sourceColorRect</key>
+        <string>{{18,12},{18,31}}</string>
+        <key>sourceSize</key>
+        <string>{69,44}</string>
+      </dict>
+    </dict>
+    <key>metadata</key>
+    <dict>
+      <key>format</key>
+      <integer>2</integer>
+      <key>pixelFormat</key>
+      <string>RGBA8888</string>
+      <key>premultiplyAlpha</key>
+      <false/>
+      <key>realTextureFileName</key>
+      <string>character-idle.png</string>
+      <key>size</key>
+      <string>{54,98}</string>
+      <key>textureFileName</key>
+      <string>character-idle</string>
+    </dict>
+  </dict>
+</plist>
