@@ -10,12 +10,9 @@ class Test : public Sprite
 {
 public:
 	bool init() override;
-
+	//int count = 0;
 	CREATE_FUNC(Test);
 
-	HorizontalLayout* _horizontalLayout;
-
-	void addChild(Node* child) override;
 };
 
 #endif // !__TEST_H__

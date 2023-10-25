@@ -1,4 +1,5 @@
 #include "Test.h"
+#include "ui/CocosGUI.h"
 
 bool Test::init()
 {
@@ -7,14 +8,15 @@ bool Test::init()
         log("Init Test failed!");
         return false;
     }
-
-    _horizontalLayout = HorizontalLayout::create();
+    
+    auto sprite = Sprite::create();
+    ui::ScrollView* scrollView = ui::ScrollView::create();
+    scrollView->setDirection(ui::ScrollView::Direction::VERTICAL);
+    scrollView->setContentSize(Size()); // view
+    scrollView->setInnerContainerSize(Size()); // content
+    scrollView->setScrollBarEnabled(false);
+    scrollView->setBounceEnabled(true);
+    scrollView->addChild(sprite);
 
     return true;
-}
-
-void Test::addChild(Node* child)
-{
-    Sprite::addChild(child);
-    _horizontalLayout->alignment();
 }
