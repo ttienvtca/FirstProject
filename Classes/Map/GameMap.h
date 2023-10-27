@@ -8,6 +8,11 @@ USING_NS_CC;
 class GameMap : TMXTiledMap
 {
 public:
+	static const std::string Collidable;
+
+	static const int MetaRed = 0;
+	static const int MetaGreen = 1;
+
 	int getMetaAtPos(const Vec2& position);
 	Point convertPosTileMap(Vec2 objectPos);
 };

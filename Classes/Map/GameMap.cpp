@@ -1,5 +1,7 @@
 #include "GameMap.h"
 
+const std::string GameMap::Collidable = "Collidable";
+
 int GameMap::getMetaAtPos(const Vec2& position)
 {
 	Point posTile = convertPosTileMap(position);
@@ -11,15 +13,15 @@ int GameMap::getMetaAtPos(const Vec2& position)
 		if (!temp.isNull())
 		{
 			ValueMap properties = temp.asValueMap();
-			auto properName = properties.find("Collidable");
-			auto properValue = properties.at("Collidable").asInt();
-			if (properName != properties.end() && properValue == 0)
+			auto properName = properties.find(GameMap::Collidable);
+			auto properValue = properties.at(GameMap::Collidable).asInt();
+			if (properName != properties.end() && properValue == GameMap::MetaRed)
 			{
-				result = 0;
+				result = GameMap::MetaRed;
 			}
-			else if (properName != properties.end() && properValue == 1)
+			else if (properName != properties.end() && properValue == GameMap::MetaGreen)
 			{
-				result = 1;
+				result = GameMap::MetaGreen;
 			}
 		}
 	}
