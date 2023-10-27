@@ -20,11 +20,27 @@ bool HelloWorld::init()
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	_character = Character::create(new EntityInfo(1, "ice-cube"));
-	_character->setPosition(visibleSize / 2);
 
 	_moveSpeed = 100.0f;
-	this->addChild(_character);
+	this->addChild(_character, 1);
 	this->scheduleUpdate();
+
+
+
+	TMXTiledMap* map = TMXTiledMap::create("Maps/map1.tmx");
+
+	this->addChild(map);
+
+	TMXObjectGroup* objGroup = map->getObjectGroup("SpawnPoint");
+	ValueMap charPoint = objGroup->getObject("CharacterSpawnPoint");
+
+	Vec2 position;
+	position.x = charPoint["x"].asFloat();
+	position.y = charPoint["y"].asFloat();
+	_character->setPosition(position);
+
+	this->getDefaultCamera()->setPosition(position);
+
 	return true;
 }
 

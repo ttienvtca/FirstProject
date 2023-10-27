@@ -18,5 +18,7 @@ bool Test::init()
     scrollView->setBounceEnabled(true);
     scrollView->addChild(sprite);
 
+
+
     return true;
 }
