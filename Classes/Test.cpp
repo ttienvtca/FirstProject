@@ -9,16 +9,6 @@ bool Test::init()
         return false;
     }
     
-    auto sprite = Sprite::create();
-    ui::ScrollView* scrollView = ui::ScrollView::create();
-    scrollView->setDirection(ui::ScrollView::Direction::VERTICAL);
-    scrollView->setContentSize(Size()); // view
-    scrollView->setInnerContainerSize(Size()); // content
-    scrollView->setScrollBarEnabled(false);
-    scrollView->setBounceEnabled(true);
-    scrollView->addChild(sprite);
-
-
 
     return true;
 }

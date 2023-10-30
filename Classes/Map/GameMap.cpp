@@ -2,11 +2,36 @@
 
 const std::string GameMap::Collidable = "Collidable";
 
+GameMap* GameMap::create(const std::string& tmxFile)
+{
+	GameMap* ret = new (std::nothrow) GameMap();
+	if (ret->initWithTMXFile(tmxFile))
+	{
+		ret->autorelease();
+		return ret;
+	}
+	CC_SAFE_DELETE(ret);
+	return nullptr;
+}
+
+bool GameMap::initWithTMXFile(const std::string& tmxFile)
+{
+	if (!TMXTiledMap::initWithTMXFile(tmxFile))
+	{
+		log("Init GameMap failed!");
+		return false;
+	}
+
+	_metaLayer = this->getLayer("Meta");
+	//_metaLayer->setVisible(false);
+	return true;
+}
+
 int GameMap::getMetaAtPos(const Vec2& position)
 {
 	Point posTile = convertPosTileMap(position);
-	int result = 0;
-	int tileGid = this->getLayer("Meta")->getTileGIDAt(posTile);
+	int result = -1;
+	int tileGid = _metaLayer->getTileGIDAt(posTile);
 	if (tileGid != 0)
 	{
 		Value temp = this->getPropertiesForGID(tileGid);

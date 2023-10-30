@@ -7,6 +7,54 @@
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "Demo/TX Props.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Demo/TX Tileset Grass.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "Demo/map-demo.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 734.6666666666667,
+                "y": 764.6666666666667
+            }
+        },
+        "Demo/meta.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Props.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Shadow.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Tileset Grass.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Tileset Wall.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/map-demo.tmx": {
+            "scale": 1,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 473,
+                "y": 741.5
+            }
+        },
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/meta.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "TX Props.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -20,11 +68,11 @@
             "scaleInEditor": 1
         },
         "map1.tmx": {
-            "scale": 0.75,
+            "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 519.3333333333333,
-                "y": 375.33333333333337
+                "x": 531,
+                "y": 370
             }
         },
         "meta.tsx": {
@@ -32,7 +80,7 @@
             "scaleInEditor": 1
         }
     },
-    "last.imagePath": "E:/VTCA/GD1302/Projects/FirstProject/Resources/Maps/Image",
+    "last.imagePath": "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/Image",
     "map.height": 30,
     "map.lastUsedFormat": "tmx",
     "map.layerDataFormat": null,
@@ -42,11 +90,18 @@
     "project": "map1.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/meta.tsx",
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Tileset Wall.tsx",
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Shadow.tsx",
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Props.tsx",
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Tileset Grass.tsx",
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/map-demo.tmx",
+        "Demo/meta.tsx",
+        "Demo/TX Props.tsx",
+        "Demo/TX Tileset Grass.tsx",
+        "Demo/map-demo.tmx",
         "TX Props.tsx",
-        "meta.tsx",
-        "TX Tileset Stone Ground.tsx",
-        "TX Tileset Grass.tsx",
-        "map1.tmx"
+        "meta.tsx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }

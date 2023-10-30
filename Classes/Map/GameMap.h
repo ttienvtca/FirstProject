@@ -5,9 +5,12 @@
 
 USING_NS_CC;
 
-class GameMap : TMXTiledMap
+class GameMap : public TMXTiledMap
 {
 public:
+	static GameMap* create(const std::string& tmxFile);
+	bool initWithTMXFile(const std::string& tmxFile);
+
 	static const std::string Collidable;
 
 	static const int MetaRed = 0;
@@ -15,6 +18,9 @@ public:
 
 	int getMetaAtPos(const Vec2& position);
 	Point convertPosTileMap(Vec2 objectPos);
+
+protected:
+	TMXLayer* _metaLayer;
 };
 
 #endif // !__GAME_MAP_H__

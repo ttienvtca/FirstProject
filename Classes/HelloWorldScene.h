@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "Character/Character.h"
+#include "Map/GameMap.h"
 
 USING_NS_CC;
 
@@ -17,8 +18,9 @@ public:
 protected:
     Character* _character;
     float _moveSpeed;
-    void update(float dt) override;
+    GameMap* _gameMap;
 protected:
+    void update(float dt) override;
     void onEnter() override;
 };
 
