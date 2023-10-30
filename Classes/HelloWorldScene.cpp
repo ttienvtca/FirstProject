@@ -52,7 +52,7 @@ bool HelloWorld::init()
 	this->getDefaultCamera()->setPosition(position);*/
 
 
-	_gameMap = GameMap::create("/Maps/Demo/map-demo.tmx");
+	_gameMap = GameMap::create("/Maps/map1.tmx");
 
 	TMXObjectGroup* objGroup = _gameMap->getObjectGroup("SpawnPoint");
 	ValueMap charPoint = objGroup->getObject("CharacterSpawnPoint");
@@ -72,10 +72,10 @@ void HelloWorld::update(float dt)
 	Vec2 direction = KeyboardInput::getInstance()->getDirection();
 
 	Vec2 nextPosition = _character->getPosition() + direction * _moveSpeed * dt;
-	if (_gameMap->getMetaAtPos(nextPosition) == GameMap::MetaRed) {
-		nextPosition = _character->getPosition() - direction * _moveSpeed * dt;
-	}
+	Vec2 checkPos = nextPosition;
+	checkPos.y = checkPos.y - _character->getModel()->getContentSize().height / 2;
 
+	if (_gameMap->getMetaAtPos(checkPos) == GameMap::MetaRed) return;
 	_character->setPosition(nextPosition);
 
 	Camera* defaultCam = this->getDefaultCamera();

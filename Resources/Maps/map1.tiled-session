@@ -17,10 +17,10 @@
         },
         "Demo/map-demo.tmx": {
             "scale": 0.75,
-            "selectedLayer": 2,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 734.6666666666667,
-                "y": 764.6666666666667
+                "x": 733.3333333333333,
+                "y": 546.6666666666666
             }
         },
         "Demo/meta.tsx": {

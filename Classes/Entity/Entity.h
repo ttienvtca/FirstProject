@@ -13,6 +13,8 @@ public:
 	static Entity* create(EntityInfo* info);
 
 	virtual bool init(EntityInfo* info);
+
+	Sprite* getModel() { return _model; }
 protected:
 	virtual bool loadAnimations();
 
