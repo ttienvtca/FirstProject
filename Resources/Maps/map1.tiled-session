@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/map-demo.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -19,8 +19,8 @@
             "scale": 0.75,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 733.3333333333333,
-                "y": 546.6666666666666
+                "x": 732,
+                "y": 545.3333333333334
             }
         },
         "Demo/meta.tsx": {
@@ -44,11 +44,14 @@
             "scaleInEditor": 1
         },
         "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/map-demo.tmx": {
-            "scale": 1,
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 0.75,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 473,
-                "y": 741.5
+                "x": 704,
+                "y": 303.33333333333326
             }
         },
         "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/meta.tsx": {
@@ -69,14 +72,14 @@
         },
         "map1.tmx": {
             "scale": 1,
-            "selectedLayer": 3,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 531,
-                "y": 370
+                "x": 354,
+                "y": 894
             }
         },
         "meta.tsx": {
-            "scaleInDock": 3,
+            "scaleInDock": 2,
             "scaleInEditor": 1
         }
     },
@@ -86,22 +89,23 @@
     "map.layerDataFormat": null,
     "map.width": 40,
     "openFiles": [
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/map-demo.tmx"
     ],
     "project": "map1.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/map-demo.tmx",
+        "Demo/map-demo.tmx",
+        "meta.tsx",
+        "map1.tmx",
         "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/meta.tsx",
         "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Tileset Wall.tsx",
         "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Shadow.tsx",
         "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Props.tsx",
         "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Tileset Grass.tsx",
-        "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/map-demo.tmx",
         "Demo/meta.tsx",
         "Demo/TX Props.tsx",
-        "Demo/TX Tileset Grass.tsx",
-        "Demo/map-demo.tmx",
-        "TX Props.tsx",
-        "meta.tsx"
+        "Demo/TX Tileset Grass.tsx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }
