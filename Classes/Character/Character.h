@@ -2,6 +2,10 @@
 #define __CHARACTER_H__
 
 #include "Entity/Entity.h"
+#include "StateMachine.h"
+#include "State/CharacterAttackState.h"
+#include "State/CharacterIdleState.h"
+#include "State/CharacterRunState.h"
 
 class Character : public Entity
 {
@@ -12,6 +16,7 @@ public:
 
 protected:
 	bool loadAnimations() override;
+	StateMachine* _stateMachine;
 };
 
 #endif // !__CHARACTER_H__

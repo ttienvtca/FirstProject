@@ -15,6 +15,7 @@ public:
 	virtual bool init(EntityInfo* info);
 
 	Sprite* getModel() { return _model; }
+	EntityInfo* getEntityInfo() { return _info; }
 protected:
 	virtual bool loadAnimations();
 

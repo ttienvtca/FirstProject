@@ -31,7 +31,7 @@ bool HelloWorld::init()
 
 
 	//this->addChild(scrollView, 3);
-	_character = Character::create(new EntityInfo(1, "ice-cube"));
+	_character = Character::create(new EntityInfo(1, "character"));
 
 	_moveSpeed = 100.0f;
 	this->addChild(_character, 1);
@@ -54,6 +54,9 @@ bool HelloWorld::init()
 
 	_gameMap = GameMap::create("/Maps/map1.tmx");
 
+	auto s = _gameMap->getContentSize();
+	auto r = _gameMap->getBoundingBox();
+
 	TMXObjectGroup* objGroup = _gameMap->getObjectGroup("SpawnPoint");
 	ValueMap charPoint = objGroup->getObject("CharacterSpawnPoint");
 
@@ -63,20 +66,22 @@ bool HelloWorld::init()
 
 	_character->setPosition(position);
 
+	KeyboardInput::getInstance()->addKey(EventKeyboard::KeyCode::KEY_SPACE);
+
 	this->addChild(_gameMap);
 	return true;
 }
 
 void HelloWorld::update(float dt)
 {
-	Vec2 direction = KeyboardInput::getInstance()->getDirection();
+	/*Vec2 direction = KeyboardInput::getInstance()->getDirection();
 
 	Vec2 nextPosition = _character->getPosition() + direction * _moveSpeed * dt;
 	Vec2 checkPos = nextPosition;
 	checkPos.y = checkPos.y - _character->getModel()->getContentSize().height / 2;
 
 	if (_gameMap->getMetaAtPos(checkPos) == GameMap::MetaRed) return;
-	_character->setPosition(nextPosition);
+	_character->setPosition(nextPosition);*/
 
 	Camera* defaultCam = this->getDefaultCamera();
 	defaultCam->setPosition(_character->getPosition());

@@ -27,6 +27,13 @@ bool Character::init(EntityInfo* info)
 	_model = Sprite::createWithSpriteFrameName(_info->_entityName + "-idle (1)");
 	_model->runAction(RepeatForever::create(animate));
 	this->addChild(_model);
+
+	_stateMachine = StateMachine::create(this);
+	_stateMachine->addState(new CharacterIdleState(), "idle");
+	_stateMachine->addState(new CharacterRunState(), "run");
+	_stateMachine->addState(new CharacterAttackState(), "attack");
+
+	this->addChild(_stateMachine);
 	return true;
 }
 
