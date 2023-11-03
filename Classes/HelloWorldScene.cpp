@@ -3,6 +3,7 @@
 #include "DemoSingleton.h"
 #include "KeyBoardInput.h"
 #include "ui/CocosGUI.h"
+#include "Camera/CameraFlow.h"
 
 USING_NS_CC;
 
@@ -13,11 +14,12 @@ Scene* HelloWorld::createScene()
 
 bool HelloWorld::init()
 {
-	if (!Scene::init())
+	if (!Scene::initWithPhysics())
 	{
 		return false;
 	}
 
+	this->getPhysicsWorld()->setGravity(Vec2(0, -98.0f));
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
@@ -28,7 +30,6 @@ bool HelloWorld::init()
 	scrollView->setDirection(ui::ScrollView::Direction::VERTICAL);
 	scrollView->setScrollBarEnabled(false);
 	scrollView->setBounceEnabled(true);
-
 
 	//this->addChild(scrollView, 3);
 	_character = Character::create(new EntityInfo(1, "character"));
@@ -74,17 +75,7 @@ bool HelloWorld::init()
 
 void HelloWorld::update(float dt)
 {
-	/*Vec2 direction = KeyboardInput::getInstance()->getDirection();
 
-	Vec2 nextPosition = _character->getPosition() + direction * _moveSpeed * dt;
-	Vec2 checkPos = nextPosition;
-	checkPos.y = checkPos.y - _character->getModel()->getContentSize().height / 2;
-
-	if (_gameMap->getMetaAtPos(checkPos) == GameMap::MetaRed) return;
-	_character->setPosition(nextPosition);*/
-
-	Camera* defaultCam = this->getDefaultCamera();
-	defaultCam->setPosition(_character->getPosition());
 }
 
 void HelloWorld::onEnter()
@@ -92,6 +83,12 @@ void HelloWorld::onEnter()
 	Scene::onEnter();
 	if (KeyboardInput::getInstance()->getParent() != nullptr)
 		KeyboardInput::getInstance()->removeFromParent();
+	Size size = Director::getInstance()->getOpenGLView()->getFrameSize();
+	auto mapSize = _gameMap->getContentSize();
+	Rect boundingBox = { size.width / 2,size.height / 2,mapSize.width - size.width / 2 - size.width / 2,mapSize.height - size.height / 2 - size.height / 2 };
+	//Rect boundingBox = { 640,360,320,560 };
+	CameraFollow* cam = CameraFollow::create(_character, boundingBox);
+	this->addChild(cam);
 
 	this->addChild(KeyboardInput::getInstance());
 }

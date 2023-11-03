@@ -16,7 +16,7 @@ void CharacterRunState::enterState(Entity* owner)
 std::string CharacterRunState::updateState()
 {
 	Vec2 direction = KeyboardInput::getInstance()->getDirection();
-	Vec2 nextPosition = _owner->getPosition() + direction * 100 * Director::getInstance()->getAnimationInterval();
+	Vec2 nextPosition = _owner->getPosition() + direction * 200 * Director::getInstance()->getAnimationInterval();
 	_owner->setPosition(nextPosition);
 
 	if (direction.x != 0)
