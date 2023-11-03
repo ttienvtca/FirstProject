@@ -4,11 +4,7 @@
 
 # Cocos2d-x specific
 /.vscode
-/proj.android
-/proj.ios_mac
-/proj.win32
 /proj.wp8-xaml
-/proj.linux
 /proj.mac
 /cmake-build-debug
 /win32-build
