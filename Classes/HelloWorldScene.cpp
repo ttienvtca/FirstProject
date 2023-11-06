@@ -4,6 +4,7 @@
 #include "KeyBoardInput.h"
 #include "ui/CocosGUI.h"
 #include "Camera/CameraFlow.h"
+#include "audio/include/AudioEngine.h"
 
 USING_NS_CC;
 
@@ -38,7 +39,6 @@ bool HelloWorld::init()
 
 	_character = Character::create(new EntityInfo(1, "character"));
 	_character->setEntityStat(characterStat);
-
 
 	/*TMXTiledMap* map = TMXTiledMap::create("Maps/map1.tmx");
 
