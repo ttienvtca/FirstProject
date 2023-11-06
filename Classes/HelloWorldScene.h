@@ -17,7 +17,6 @@ public:
     
 protected:
     Character* _character;
-    float _moveSpeed;
     GameMap* _gameMap;
 protected:
     void update(float dt) override;

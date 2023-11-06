@@ -4,8 +4,6 @@
 #include "cocos2d.h"
 #include "Entity/Entity.h"
 
-USING_NS_CC;
-
 class State
 {
 public:

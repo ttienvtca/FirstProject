@@ -1,5 +1,8 @@
 #include "Character.h"
 #include "Utilities/AnimationUtils.h"
+#include "State/CharacterIdleState.h"
+#include "State/CharacterAttackState.h"
+#include "State/CharacterRunState.h"
 
 Character* Character::create(EntityInfo* info)
 {
@@ -22,16 +25,15 @@ bool Character::init(EntityInfo* info)
 		return false;
 	}
 
-	auto aniIdle = AnimationCache::getInstance()->getAnimation(_info->_entityName + "-idle");
-	auto animate = Animate::create(aniIdle);
 	_model = Sprite::createWithSpriteFrameName(_info->_entityName + "-idle (1)");
-	_model->runAction(RepeatForever::create(animate));
 	this->addChild(_model);
 
 	_stateMachine = StateMachine::create(this);
-	_stateMachine->addState(new CharacterIdleState(), "idle");
-	_stateMachine->addState(new CharacterRunState(), "run");
-	_stateMachine->addState(new CharacterAttackState(), "attack");
+	_stateMachine->addState("idle", new CharacterIdleState());
+	_stateMachine->addState("attack", new CharacterAttackState());
+	_stateMachine->addState("run", new CharacterRunState());
+	_stateMachine->setCurrentState("idle");
+
 
 	this->addChild(_stateMachine);
 	return true;

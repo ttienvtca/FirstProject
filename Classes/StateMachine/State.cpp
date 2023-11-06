@@ -1,5 +1,5 @@
 #include "State.h"
-#include "StateMachine.h"
+#include "StateMachine/StateMachine.h"
 
 void State::enterState(Entity* owner)
 {
@@ -13,7 +13,5 @@ std::string State::updateState()
 
 void State::exitState()
 {
-	_owner->getModel()->stopAllActions();
-	//_owner->getModel()->stopActionByTag(StateMachine::AnimationTag);
+	_owner->getModel()->stopActionByTag(StateMachine::AnimationTag);
 }
-

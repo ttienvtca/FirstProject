@@ -32,11 +32,13 @@ bool HelloWorld::init()
 	scrollView->setBounceEnabled(true);
 
 	//this->addChild(scrollView, 3);
-	_character = Character::create(new EntityInfo(1, "character"));
 
-	_moveSpeed = 100.0f;
-	this->addChild(_character, 1);
-	this->scheduleUpdate();
+	EntityStat* characterStat = new EntityStat();
+	characterStat->_moveSpeed = 200.0f;
+
+	_character = Character::create(new EntityInfo(1, "character"));
+	_character->setEntityStat(characterStat);
+
 
 	/*TMXTiledMap* map = TMXTiledMap::create("Maps/map1.tmx");
 
@@ -55,9 +57,6 @@ bool HelloWorld::init()
 
 	_gameMap = GameMap::create("/Maps/map1.tmx");
 
-	auto s = _gameMap->getContentSize();
-	auto r = _gameMap->getBoundingBox();
-
 	TMXObjectGroup* objGroup = _gameMap->getObjectGroup("SpawnPoint");
 	ValueMap charPoint = objGroup->getObject("CharacterSpawnPoint");
 
@@ -70,6 +69,8 @@ bool HelloWorld::init()
 	KeyboardInput::getInstance()->addKey(EventKeyboard::KeyCode::KEY_SPACE);
 
 	this->addChild(_gameMap);
+	this->addChild(_character, 1);
+	this->scheduleUpdate();
 	return true;
 }
 

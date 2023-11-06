@@ -2,24 +2,25 @@
 #define __STATE_MACHINE_H__
 
 #include "cocos2d.h"
-#include "Entity/Entity.h"
 #include "State.h"
+
 USING_NS_CC;
 
 class StateMachine : public Node
 {
 public:
-	static const int AnimationTag = 10;
+	static const int AnimationTag = 1;
 public:
-	static StateMachine* create(Entity* entity);
+	static StateMachine* create(Entity* owner);
+	bool init(Entity* owner);
 
-	virtual bool init(Entity* entity);
-	virtual void addState(State* state, std::string stateName);
+	void addState(std::string stateName, State* newState);
+	void setCurrentState(std::string stateName);
+
 protected:
-	Entity* _entityTarget;
 	std::map<std::string, State*> _states;
-
 	std::string _currentState;
+	Entity* _owner;
 protected:
 	void update(float dt) override;
 	void onEnter() override;

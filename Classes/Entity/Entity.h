@@ -21,7 +21,8 @@ protected:
 
 protected:
 	EntityInfo* _info;
-	EntityStat* _entityStat;
+
+	CC_SYNTHESIZE(EntityStat*, _entityStat, EntityStat);
 
 	Sprite* _model;
 };
