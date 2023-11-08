@@ -47,22 +47,24 @@ endif()
 set(GAME_SOURCE)
 set(GAME_HEADER)
 
+file(GLOB_RECURSE GAME_HEADER
+    Classes/*.h
+    )
+
+file(GLOB_RECURSE GAME_SOURCE
+    Classes/*.cpp
+    )
+    
+set(GAME_INC_DIRS
+  "${CMAKE_CURRENT_SOURCE_DIR}/Classes"
+)
+
 set(GAME_RES_FOLDER
     "${CMAKE_CURRENT_SOURCE_DIR}/Resources"
     )
 if(APPLE OR WINDOWS)
     cocos_mark_multi_resources(common_res_files RES_TO "Resources" FOLDERS ${GAME_RES_FOLDER})
 endif()
-
-# add cross-platforms source files and header files 
-list(APPEND GAME_SOURCE
-     Classes/AppDelegate.cpp
-     Classes/HelloWorldScene.cpp
-     )
-list(APPEND GAME_HEADER
-     Classes/AppDelegate.h
-     Classes/HelloWorldScene.h
-     )
 
 if(ANDROID)
     # change APP_NAME to the share library name for Android, it's value depend on AndroidManifest.xml

@@ -87,7 +87,6 @@ void HelloWorld::onEnter()
 	Size size = Director::getInstance()->getOpenGLView()->getFrameSize();
 	auto mapSize = _gameMap->getContentSize();
 	Rect boundingBox = { size.width / 2,size.height / 2,mapSize.width - size.width / 2 - size.width / 2,mapSize.height - size.height / 2 - size.height / 2 };
-	//Rect boundingBox = { 640,360,320,560 };
 	CameraFollow* cam = CameraFollow::create(_character, boundingBox);
 	this->addChild(cam);
 
