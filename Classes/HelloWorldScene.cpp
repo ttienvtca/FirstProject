@@ -40,21 +40,6 @@ bool HelloWorld::init()
 	_character = Character::create(new EntityInfo(1, "character"));
 	_character->setEntityStat(characterStat);
 
-	/*TMXTiledMap* map = TMXTiledMap::create("Maps/map1.tmx");
-
-	this->addChild(map);
-
-	TMXObjectGroup* objGroup = map->getObjectGroup("SpawnPoint");
-	ValueMap charPoint = objGroup->getObject("CharacterSpawnPoint");
-
-	Vec2 position;
-	position.x = charPoint["x"].asFloat();
-	position.y = charPoint["y"].asFloat();
-	_character->setPosition(position);
-
-	this->getDefaultCamera()->setPosition(position);*/
-
-
 	_gameMap = GameMap::create("/Maps/map1.tmx");
 
 	TMXObjectGroup* objGroup = _gameMap->getObjectGroup("SpawnPoint");

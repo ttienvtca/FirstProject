@@ -2,7 +2,7 @@
 #include "HelloWorldScene.h"
 #include "Test.h"
 #include "Utilities/AnimationUtils.h"
-#include "Scene/DemoPhysic.h"
+#include "DemoJson.h"
 
 #if USE_AUDIO_ENGINE
 #include "audio/include/AudioEngine.h"
@@ -69,7 +69,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     //auto scene = HelloWorld::createScene();
     //auto scene = HelloWorld::createScene();
-    auto scene = DemoPhysic::create();
+    auto scene = DemoJson::create();
 
     director->runWithScene(scene);
 

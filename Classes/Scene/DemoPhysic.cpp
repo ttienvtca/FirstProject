@@ -8,6 +8,8 @@ bool DemoPhysic::init()
 		return false;
 	}
 
+	//this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+
 	_character = Sprite::create("HelloWorld.png");
 	_character->setPosition(Director::getInstance()->getWinSize() / 2);
 	this->addChild(_character);
@@ -20,9 +22,9 @@ bool DemoPhysic::init()
 
 void DemoPhysic::onMouseDown(EventMouse* event)
 {
-	Vec2 mousPos = event->getLocationInView();
+	Vec2 mousePos = event->getLocationInView();
 	float speed = 300;
-	Vec2 direction = mousPos - _character->getPosition();
+	Vec2 direction = mousePos - _character->getPosition();
 	direction.normalize();
 	
 	// create bullet
@@ -34,5 +36,9 @@ void DemoPhysic::onMouseDown(EventMouse* event)
 	bullet->getPhysicsBody()->setGravityEnable(false);
 	bullet->getPhysicsBody()->setVelocity(direction * speed);
 
+	float angle = Vec2::angle(Vec2::ANCHOR_BOTTOM_RIGHT, direction);
+	if (direction.y > 0)
+		angle = -angle;
+	bullet->setRotation(CC_RADIANS_TO_DEGREES(angle));
 	this->addChild(bullet);
 }
