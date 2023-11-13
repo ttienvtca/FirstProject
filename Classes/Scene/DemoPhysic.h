@@ -13,8 +13,9 @@ public:
 
 private:
 	void onMouseDown(EventMouse* event);
-
 	Sprite* _character;
+
+
 };
 
 #endif // !__DEMO_PHYSIC_H__

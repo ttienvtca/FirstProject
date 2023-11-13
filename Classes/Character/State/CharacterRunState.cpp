@@ -10,6 +10,13 @@ void CharacterRunState::enterState(Entity* owner)
 	auto animate = RepeatForever::create(Animate::create(ani));
 	animate->setTag(StateMachine::AnimationTag);
 	_owner->getModel()->runAction(animate);
+
+	auto mapNode = Director::getInstance()
+		->getRunningScene()->getChildByTag(99);
+	if (mapNode != nullptr)
+	{
+		_map = static_cast<GameMap*>(mapNode);
+	}
 }
 
 std::string CharacterRunState::updateState()
@@ -19,8 +26,8 @@ std::string CharacterRunState::updateState()
 	Vec2 direction = keyboard->getDirection();
 	float dt = Director::getInstance()->getAnimationInterval();
 	Vec2 nextPostion = _owner->getPosition() + direction * _owner->getEntityStat()->_moveSpeed * dt;
-
-	_owner->setPosition(nextPostion);
+	if (_map->getMetaAtPos(nextPostion) != GameMap::MetaRed)
+		_owner->setPosition(nextPostion);
 
 	if (direction.x != 0)
 		_owner->getModel()->setFlippedX(direction.x < 0);

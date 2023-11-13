@@ -41,6 +41,7 @@ bool HelloWorld::init()
 	_character->setEntityStat(characterStat);
 
 	_gameMap = GameMap::create("/Maps/map1.tmx");
+	_gameMap->setTag(99);
 
 	TMXObjectGroup* objGroup = _gameMap->getObjectGroup("SpawnPoint");
 	ValueMap charPoint = objGroup->getObject("CharacterSpawnPoint");

@@ -1,4 +1,6 @@
 #include "DemoPhysic.h"
+#include "Ball.h"
+#include "DefineBitmask.h"
 
 bool DemoPhysic::init()
 {
@@ -7,38 +9,34 @@ bool DemoPhysic::init()
 		log("Init DemoPhysic failed!");
 		return false;
 	}
+	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	this->getPhysicsWorld()->setGravity(Vec2(0, -500));
 
-	//this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	auto edgeBox = Node::create();
+	auto edgeBody = PhysicsBody::createEdgeBox(Director::getInstance()->getVisibleSize(), 
+		PhysicsMaterial(1, 1, 1), 30);
+	edgeBody->setCategoryBitmask(DefineBitmask::Wall);
+	edgeBody->setCollisionBitmask(DefineBitmask::BALL);
+	edgeBody->setContactTestBitmask(DefineBitmask::BALL | DefineBitmask::Wall);
 
-	_character = Sprite::create("HelloWorld.png");
+
+	edgeBox->setPhysicsBody(edgeBody);
+	edgeBox->setPosition(Director::getInstance()->getVisibleSize() / 2);
+
+	_character = Ball::create();
 	_character->setPosition(Director::getInstance()->getWinSize() / 2);
-	this->addChild(_character);
+
 	auto listener = EventListenerMouse::create();
 	listener->onMouseDown = CC_CALLBACK_1(DemoPhysic::onMouseDown, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	this->addChild(_character);
+	this->addChild(edgeBox);
+
 	return true;
 }
 
 void DemoPhysic::onMouseDown(EventMouse* event)
 {
-	Vec2 mousePos = event->getLocationInView();
-	float speed = 300;
-	Vec2 direction = mousePos - _character->getPosition();
-	direction.normalize();
-	
-	// create bullet
-	auto bullet = Sprite::create("1.png");
-	bullet->setPosition(_character->getPosition());
-
-	auto body = PhysicsBody::createCircle(bullet->getContentSize().width / 2, PhysicsMaterial(1, 0, 1));
-	bullet->setPhysicsBody(body);
-	bullet->getPhysicsBody()->setGravityEnable(false);
-	bullet->getPhysicsBody()->setVelocity(direction * speed);
-
-	float angle = Vec2::angle(Vec2::ANCHOR_BOTTOM_RIGHT, direction);
-	if (direction.y > 0)
-		angle = -angle;
-	bullet->setRotation(CC_RADIANS_TO_DEGREES(angle));
-	this->addChild(bullet);
+	_character->getPhysicsBody()->applyForce(Vec2(0, 1) * 3000);
 }

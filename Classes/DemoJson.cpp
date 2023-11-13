@@ -2,8 +2,6 @@
 #include "json/rapidjson.h"
 #include "json/document.h"
 
-
-
 bool DemoJson::init()
 {
     if (!Scene::init())
