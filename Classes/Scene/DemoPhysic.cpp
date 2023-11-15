@@ -40,3 +40,27 @@ void DemoPhysic::onMouseDown(EventMouse* event)
 {
 	_character->getPhysicsBody()->applyForce(Vec2(0, 1) * 3000);
 }
+
+void DemoPhysic::onEnter()
+{
+	Scene::onEnter();
+	//auto children = Director::getInstance()->getRunningScene()->getChildren();
+	//children.eraseObject(this);
+
+
+	//// pause
+	//for (auto child : children)
+	//{
+	//	child->pause();
+	//}
+	//Director::getInstance()->getRunningScene()->getPhysicsWorld()->setSpeed(0);
+
+
+	//// resume
+	//for (auto child : children)
+	//{
+	//	child->resume();
+	//}
+	//Director::getInstance()->getRunningScene()->getPhysicsWorld()->setSpeed(1.0f);
+	//Director::getInstance()->getRunningScene()->getPhysicsWorld()->setSpeed(0.0f);
+}

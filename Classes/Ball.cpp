@@ -28,25 +28,7 @@ bool Ball::init()
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 	this->setPhysicsBody(body);
 
-
-	auto children = Director::getInstance()->getRunningScene()->getChildren();
-	children.eraseObject(this);
-
-
-	// pause
-	for (auto child : children)
-	{
-		child->pause();
-	}
-	Director::getInstance()->getRunningScene()->getPhysicsWorld()->setSpeed(0);
-
-
-	// resume
-	for (auto child : children)
-	{
-		child->resume();
-	}
-	Director::getInstance()->getRunningScene()->getPhysicsWorld()->setSpeed(1.0f);
+	
 	return true;
 }
 

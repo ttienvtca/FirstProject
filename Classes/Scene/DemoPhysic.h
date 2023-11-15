@@ -15,6 +15,7 @@ private:
 	void onMouseDown(EventMouse* event);
 	Sprite* _character;
 
+	void onEnter();
 
 };
 
