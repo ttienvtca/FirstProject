@@ -5,6 +5,8 @@
 #include "ui/CocosGUI.h"
 #include "Camera/CameraFlow.h"
 #include "audio/include/AudioEngine.h"
+#include "Enemy/Enemy.h"
+#include "Bullet/Bullet.h"
 
 USING_NS_CC;
 
@@ -20,26 +22,27 @@ bool HelloWorld::init()
 		return false;
 	}
 
+	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+
 	this->getPhysicsWorld()->setGravity(Vec2(0, -98.0f));
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-
-	ui::ScrollView* scrollView = ui::ScrollView::create();
-	scrollView->setContentSize(Size(200, 200));
-	scrollView->setBackGroundImage("bg.jpg", ui::Widget::TextureResType::LOCAL);
-	scrollView->setDirection(ui::ScrollView::Direction::VERTICAL);
-	scrollView->setScrollBarEnabled(false);
-	scrollView->setBounceEnabled(true);
-
-	//this->addChild(scrollView, 3);
-
 	EntityStat* characterStat = new EntityStat();
 	characterStat->_moveSpeed = 200.0f;
+	characterStat->_attack = 10;
 
+	// Character
 	_character = Character::create(new EntityInfo(1, "character"));
 	_character->setEntityStat(characterStat);
 
+	// Enemy
+	auto enemy = Enemy::create(new EntityInfo(1, "ice-cube"));
+	enemy->setPosition(Director::getInstance()->getVisibleSize() / 2);
+
+	this->addChild(enemy, 1);
+
+	// Map
 	_gameMap = GameMap::create("/Maps/map1.tmx");
 	_gameMap->setTag(99);
 
@@ -51,8 +54,14 @@ bool HelloWorld::init()
 	position.y = charPoint["y"].asFloat();
 
 	_character->setPosition(position);
-
 	KeyboardInput::getInstance()->addKey(EventKeyboard::KeyCode::KEY_SPACE);
+
+
+	auto listener = EventListenerMouse::create();
+	listener->onMouseDown = CC_CALLBACK_1(HelloWorld::onMouseDown, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+
 
 	this->addChild(_gameMap);
 	this->addChild(_character, 1);
@@ -77,4 +86,17 @@ void HelloWorld::onEnter()
 	this->addChild(cam);
 
 	this->addChild(KeyboardInput::getInstance());
+}
+
+void HelloWorld::onMouseDown(EventMouse* event)
+{
+	Vec2 direction = event->getLocationInView() - _character->getPosition();
+	direction.normalize();
+	auto bullet = Bullet::create("1");
+
+	bullet->getPhysicsBody()->setVelocity(direction * 300);
+	bullet->setPosition(_character->getPosition());
+	bullet->setOwner(_character);
+
+	this->addChild(bullet, 1);
 }

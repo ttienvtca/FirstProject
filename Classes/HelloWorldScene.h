@@ -22,6 +22,7 @@ protected:
 protected:
     void update(float dt) override;
     void onEnter() override;
+    void onMouseDown(EventMouse* event);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

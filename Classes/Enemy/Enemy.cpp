@@ -1,13 +1,10 @@
-#include "Character.h"
+#include "Enemy.h"
 #include "Utilities/AnimationUtils.h"
-#include "State/CharacterIdleState.h"
-#include "State/CharacterAttackState.h"
-#include "State/CharacterRunState.h"
 #include "DefineBitmask.h"
 
-Character* Character::create(EntityInfo* info)
+Enemy* Enemy::create(EntityInfo* info)
 {
-	auto newObject = new Character();
+	auto newObject = new Enemy();
 	if (newObject != nullptr && newObject->init(info))
 	{
 		newObject->autorelease();
@@ -18,7 +15,7 @@ Character* Character::create(EntityInfo* info)
 	return nullptr;
 }
 
-bool Character::init(EntityInfo* info)
+bool Enemy::init(EntityInfo* info)
 {
 	if (!Entity::init(info))
 	{
@@ -29,23 +26,20 @@ bool Character::init(EntityInfo* info)
 	_model = Sprite::createWithSpriteFrameName(_info->_entityName + "-idle (1)");
 	this->addChild(_model);
 
-	_stateMachine = StateMachine::create(this);
-	_stateMachine->addState("idle", new CharacterIdleState());
-	_stateMachine->addState("attack", new CharacterAttackState());
-	_stateMachine->addState("run", new CharacterRunState());
-	_stateMachine->setCurrentState("idle");
-
 	auto body = PhysicsBody::createEdgeBox(_model->getContentSize(), PhysicsMaterial(1, 0, 1), 1.0f);
-	body->setCategoryBitmask(DefineBitmask::Character);
-	body->setCollisionBitmask(DefineBitmask::Enemy);
-	body->setContactTestBitmask(DefineBitmask::Enemy);
-	//this->setPhysicsBody(body);
-
-	this->addChild(_stateMachine);
+	body->setCategoryBitmask(DefineBitmask::Enemy);
+	body->setCollisionBitmask(DefineBitmask::Character);
+	body->setContactTestBitmask(DefineBitmask::Character);
+	this->setPhysicsBody(body);
 	return true;
 }
 
-bool Character::loadAnimations()
+void Enemy::takeDamage(Entity* attacker)
+{
+	log("take dame: %d", attacker->getEntityStat()->_attack);
+}
+
+bool Enemy::loadAnimations()
 {
 	Entity::loadAnimations();
 
@@ -56,7 +50,7 @@ bool Character::loadAnimations()
 
 	for (auto name : aniNames)
 	{
-		AnimationUtils::loadSpriteFrameCache("Character/", name);
+		AnimationUtils::loadSpriteFrameCache("Enemy/", name);
 		AnimationUtils::createAnimation(name, 1.0f);
 	}
 
