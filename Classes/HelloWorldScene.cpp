@@ -40,6 +40,13 @@ bool HelloWorld::init()
 	auto enemy = Enemy::create(new EntityInfo(1, "ice-cube"));
 	enemy->setPosition(Director::getInstance()->getVisibleSize() / 2);
 
+	EntityStat* enemyStat = new EntityStat();
+	enemyStat->_moveSpeed = 200.0f;
+	enemyStat->_attack = 10;
+	enemyStat->_health = 50;
+
+	enemy->setEntityStat(enemyStat);
+
 	this->addChild(enemy, 1);
 
 	// Map
@@ -61,7 +68,6 @@ bool HelloWorld::init()
 	listener->onMouseDown = CC_CALLBACK_1(HelloWorld::onMouseDown, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-
 
 	this->addChild(_gameMap);
 	this->addChild(_character, 1);
@@ -94,8 +100,8 @@ void HelloWorld::onMouseDown(EventMouse* event)
 	direction.normalize();
 	auto bullet = Bullet::create("1");
 
-	bullet->getPhysicsBody()->setVelocity(direction * 300);
 	bullet->setPosition(_character->getPosition());
+	bullet->getPhysicsBody()->setVelocity(direction * 300);
 	bullet->setOwner(_character);
 
 	this->addChild(bullet, 1);

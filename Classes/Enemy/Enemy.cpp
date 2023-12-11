@@ -31,12 +31,15 @@ bool Enemy::init(EntityInfo* info)
 	body->setCollisionBitmask(DefineBitmask::Character);
 	body->setContactTestBitmask(DefineBitmask::Character);
 	this->setPhysicsBody(body);
+
 	return true;
 }
 
 void Enemy::takeDamage(Entity* attacker)
 {
-	log("take dame: %d", attacker->getEntityStat()->_attack);
+	int dame = attacker->getEntityStat()->_attack;
+	log("take dame: %d", dame);
+	_healthCtrl->setCurrentHealth(_healthCtrl->getCurrentHealth() - dame);
 }
 
 bool Enemy::loadAnimations()
@@ -55,4 +58,23 @@ bool Enemy::loadAnimations()
 	}
 
 	return true;
+}
+
+void Enemy::onDie()
+{
+	log("die");
+	// add effects....
+	this->removeFromParentAndCleanup(true);
+}
+
+void Enemy::onEnter()
+{
+	Node::onEnter();
+
+	// health
+	_healthCtrl = HealthController::create(_entityStat->_health, "fill.png");
+	_healthCtrl->setOnDie(CC_CALLBACK_0(Enemy::onDie, this));
+	_healthCtrl->setPosition(Vec2(-_healthCtrl->getContentSize().width / 2
+		, _model->getContentSize().height));
+	this->addChild(_healthCtrl);
 }

@@ -3,6 +3,7 @@
 
 #include "Entity/Entity.h"
 #include "IDamageable.h"
+#include "Health/HealthController.h"
 
 class Enemy : public Entity, public IDamageable
 {
@@ -13,6 +14,12 @@ public:
 	void takeDamage(Entity* attacker) override;
 protected:
 	bool loadAnimations() override;
+
+	HealthController* _healthCtrl;
+
+	void onDie();
+
+	void onEnter();
 };
 
 #endif // !__ENEMY_H__
