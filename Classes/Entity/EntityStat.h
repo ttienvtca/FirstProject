@@ -4,11 +4,11 @@
 class EntityStat
 {
 public:
-	int _health;
-	int _attack;
+	int _hp;
+	int _atk;
 
-	float _moveSpeed;
-	float _attackSpeed;
+	float _spd;
+	float _aspd;
 };
 
 #endif // !__ENTITY_STAT_H__

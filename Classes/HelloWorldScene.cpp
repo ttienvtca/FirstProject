@@ -28,24 +28,12 @@ bool HelloWorld::init()
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	EntityStat* characterStat = new EntityStat();
-	characterStat->_moveSpeed = 200.0f;
-	characterStat->_attack = 10;
-
 	// Character
 	_character = Character::create(new EntityInfo(1, "character"));
-	_character->setEntityStat(characterStat);
 
 	// Enemy
-	auto enemy = Enemy::create(new EntityInfo(1, "ice-cube"));
+	auto enemy = Enemy::create(new EntityInfo(2, "ice-cube"));
 	enemy->setPosition(Director::getInstance()->getVisibleSize() / 2);
-
-	EntityStat* enemyStat = new EntityStat();
-	enemyStat->_moveSpeed = 200.0f;
-	enemyStat->_attack = 10;
-	enemyStat->_health = 50;
-
-	enemy->setEntityStat(enemyStat);
 
 	this->addChild(enemy, 1);
 
@@ -63,11 +51,20 @@ bool HelloWorld::init()
 	_character->setPosition(position);
 	KeyboardInput::getInstance()->addKey(EventKeyboard::KeyCode::KEY_SPACE);
 
+	auto keyboardListener = EventListenerKeyboard::create();
+	keyboardListener->onKeyPressed = [=](EventKeyboard::KeyCode key, Event* event) {
+		if (key == EventKeyboard::KeyCode::KEY_TAB)
+		{
+			log("character level up");
+			_character->setLevel(_character->getEntityInfo()->_level + 1);
+		}
+	};
 
 	auto listener = EventListenerMouse::create();
 	listener->onMouseDown = CC_CALLBACK_1(HelloWorld::onMouseDown, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 
 	this->addChild(_gameMap);
 	this->addChild(_character, 1);

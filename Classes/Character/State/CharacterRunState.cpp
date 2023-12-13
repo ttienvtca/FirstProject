@@ -25,7 +25,7 @@ std::string CharacterRunState::updateState()
 	// update
 	Vec2 direction = keyboard->getDirection();
 	float dt = Director::getInstance()->getAnimationInterval();
-	Vec2 nextPostion = _owner->getPosition() + direction * _owner->getEntityStat()->_moveSpeed * dt;
+	Vec2 nextPostion = _owner->getPosition() + direction * _owner->getEntityStat()->_spd * dt;
 	if (_map->getMetaAtPos(nextPostion) != GameMap::MetaRed)
 		_owner->setPosition(nextPostion);
 

@@ -72,6 +72,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto scene = HelloWorld::createScene();
     //auto scene = DemoPhysic::create();
     //auto scene = DemoJson::create();
+    //auto scene = Test::create();
 
     director->runWithScene(scene);
 

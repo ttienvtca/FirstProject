@@ -19,7 +19,7 @@ bool Enemy::init(EntityInfo* info)
 {
 	if (!Entity::init(info))
 	{
-		log("Init Character failed!");
+		log("Init Enemy failed!");
 		return false;
 	}
 
@@ -37,7 +37,7 @@ bool Enemy::init(EntityInfo* info)
 
 void Enemy::takeDamage(Entity* attacker)
 {
-	int dame = attacker->getEntityStat()->_attack;
+	int dame = attacker->getEntityStat()->_atk;
 	log("take dame: %d", dame);
 	_healthCtrl->setCurrentHealth(_healthCtrl->getCurrentHealth() - dame);
 }
@@ -72,7 +72,7 @@ void Enemy::onEnter()
 	Node::onEnter();
 
 	// health
-	_healthCtrl = HealthController::create(_entityStat->_health, "fill.png");
+	_healthCtrl = HealthController::create(_entityStat->_hp, "fill.png");
 	_healthCtrl->setOnDie(CC_CALLBACK_0(Enemy::onDie, this));
 	_healthCtrl->setPosition(Vec2(-_healthCtrl->getContentSize().width / 2
 		, _model->getContentSize().height));
