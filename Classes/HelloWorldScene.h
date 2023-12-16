@@ -11,10 +11,9 @@ USING_NS_CC;
 class HelloWorld : public cocos2d::Scene
 {
 public:
-    static cocos2d::Scene* createScene();
+    static Scene* create(std::string mapName);
 
-    virtual bool init();
-    CREATE_FUNC(HelloWorld);
+    virtual bool init(std::string mapName);
     
 protected:
     Character* _character;

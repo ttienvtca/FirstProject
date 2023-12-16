@@ -10,12 +10,20 @@
 
 USING_NS_CC;
 
-Scene* HelloWorld::createScene()
+Scene* HelloWorld::create(std::string mapName)
 {
-	return HelloWorld::create();
+	auto newObject = new HelloWorld();
+	if (newObject != nullptr && newObject->init(mapName))
+	{
+		newObject->autorelease();
+		return newObject;
+	}
+
+	CC_SAFE_DELETE(newObject);
+	return nullptr;
 }
 
-bool HelloWorld::init()
+bool HelloWorld::init(std::string mapName)
 {
 	if (!Scene::initWithPhysics())
 	{
@@ -38,7 +46,7 @@ bool HelloWorld::init()
 	this->addChild(enemy, 1);
 
 	// Map
-	_gameMap = GameMap::create("/Maps/map1.tmx");
+	_gameMap = GameMap::create(mapName);
 	_gameMap->setTag(99);
 
 	TMXObjectGroup* objGroup = _gameMap->getObjectGroup("SpawnPoint");

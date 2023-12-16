@@ -1,11 +1,12 @@
 #include "GameMap.h"
 
 const std::string GameMap::Collidable = "Collidable";
+const std::string GameMap::MapPath = "Maps/";
 
 GameMap* GameMap::create(const std::string& tmxFile)
 {
 	GameMap* ret = new (std::nothrow) GameMap();
-	if (ret->initWithTMXFile(tmxFile))
+	if (ret->initWithTMXFile(GameMap::MapPath + tmxFile))
 	{
 		ret->autorelease();
 		return ret;
@@ -16,7 +17,7 @@ GameMap* GameMap::create(const std::string& tmxFile)
 
 bool GameMap::initWithTMXFile(const std::string& tmxFile)
 {
-	if (!TMXTiledMap::initWithTMXFile(tmxFile))
+	if (!TMXTiledMap::initWithTMXFile(tmxFile + ".tmx"))
 	{
 		log("Init GameMap failed!");
 		return false;

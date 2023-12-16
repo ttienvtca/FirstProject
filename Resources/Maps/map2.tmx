@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="2">
+ <tileset firstgid="1" source="../../../../../GD1301/Cocos2dxProject/FirstProj/Resources/Map/TX Tileset Grass.tsx"/>
+ <tileset firstgid="65" source="meta.tsx"/>
+ <tileset firstgid="67" source="TX Tileset Stone Ground.tsx"/>
+ <layer id="1" name="BG" width="30" height="25">
+  <data encoding="base64" compression="zlib">
+   eJx1lkmOxCAQBPmb4WQ4Af//ythShRRUew6oaVxL1pbQSintWetZ41nXs+74fc96rBpyO76/a8bvjv0MG9ipsUbI9NivkG0h16W7QhbdHTI7yfBtSecSbrBjv4eM5Yg76+D/LmdMI2FC/075acoBeXXO8E9MK32rwgV+26gh2//JITUET9cefFP2bskZJzFh2/kHM7ab9vQPvUI8U3LEgA3WSvLoVMV5Sc8Yu+RasklNwX/FfkpvKE/0AmeeD+SX/E3JzHJiJVbPg7HTL9Sh6tdxUGtyy3/r9/KbD2rifqDWrovtsafWtjOkS8yeCc8b35GxD+y6X/Ice4ZrOfuK34zfs8MZOXediIk935Gnb4i7f5y38tuj9ACz1OSX2rp/M4/lHgCT+xi74AEL/eU+Ix/mDfNYl80hvV7OvhnlnKMpOfJtfmN23MdgabJB/sw7t+wv2XG/udfz/NF/md88V57trWWbmTd28uN4zae1nJzp+2vIN31C/JknzevOATjMi+YxfJvTia/LN3bB7/z7rjYmn3lWyIN5DVnfpXfyiQ3neJazb10P4nTs+T7zPeM58Z1qHvAd7NmzPLb9vsm+lpbfB+YvdKj5lm6Vnnkk19Z8Zt/G5vp+za7fM3CBc2Q5v+fA9PVG6bLFnKMHj1Sdk1fzIL1pbsIu5+YuzyD5hq/yfeG3qvnBtTZ+v0NHOXPgb9gBw9SvZ8T3KH6pL/L5vQlW+PXV/wMhz92X
+  </data>
+ </layer>
+ <objectgroup id="3" name="SpawnPoint">
+  <object id="1" name="CharacterSpawnPoint" x="223.904" y="597.078">
+   <point/>
+  </object>
+ </objectgroup>
+ <layer id="2" name="Meta" width="30" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztzTENAAAMw7BSK39SIzFtjyPldpP06eu4XC6Xy+VyudwN9+MB/dca6w==
+  </data>
+ </layer>
+</map>

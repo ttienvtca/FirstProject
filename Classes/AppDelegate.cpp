@@ -69,10 +69,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
 
     //auto scene = HelloWorld::createScene();
-    auto scene = HelloWorld::createScene();
+    //auto scene = HelloWorld::createScene();
     //auto scene = DemoPhysic::create();
     //auto scene = DemoJson::create();
-    //auto scene = Test::create();
+    auto scene = Test::create();
 
     director->runWithScene(scene);
 
