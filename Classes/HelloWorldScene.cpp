@@ -36,21 +36,41 @@ bool HelloWorld::init(std::string mapName)
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	// Character
-	_character = Character::create(new EntityInfo(1, "character"));
-
-	// Enemy
-	auto enemy = Enemy::create(new EntityInfo(2, "ice-cube"));
-	enemy->setPosition(Director::getInstance()->getVisibleSize() / 2);
-
-	this->addChild(enemy, 1);
 
 	// Map
 	_gameMap = GameMap::create(mapName);
 	_gameMap->setTag(99);
 
-	TMXObjectGroup* objGroup = _gameMap->getObjectGroup("SpawnPoint");
-	ValueMap charPoint = objGroup->getObject("CharacterSpawnPoint");
+
+	// Enemy
+	TMXObjectGroup* enemySpawnPoint = _gameMap->getObjectGroup("EnemySpawnPoint");
+	auto enemies = enemySpawnPoint->getObjects();
+
+	for (auto enemyInfo : enemies)
+	{
+		ValueMap entityInfo = enemyInfo.asValueMap();
+		std::string name = entityInfo["name"].asString();
+		int lv = entityInfo["level"].asInt();
+		auto info = new EntityInfo(lv, name);
+
+		Vec2 position;
+		position.x = entityInfo["x"].asFloat();
+		position.y = entityInfo["y"].asFloat();
+
+		auto enemy = Enemy::create(info);
+		enemy->setPosition(position);
+
+		this->addChild(enemy, 3);
+	}
+	/*auto enemy = Enemy::create(new EntityInfo(2, "ice-cube"));
+	enemy->setPosition(Director::getInstance()->getVisibleSize() / 2);
+
+	this->addChild(enemy, 1);*/
+
+	// Character
+	TMXObjectGroup* spawnPoint = _gameMap->getObjectGroup("SpawnPoint");
+	ValueMap charPoint = spawnPoint->getObject("CharacterSpawnPoint");
+	_character = Character::create(new EntityInfo(1, "character"));
 
 	Vec2 position;
 	position.x = charPoint["x"].asFloat();

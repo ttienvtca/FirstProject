@@ -26,6 +26,15 @@ bool Enemy::init(EntityInfo* info)
 	_model = Sprite::createWithSpriteFrameName(_info->_entityName + "-idle (1)");
 	this->addChild(_model);
 
+	auto lvLabel = Label::createWithSystemFont("Lv. " + std::to_string(info->_level)
+		, "Arial", 16);
+	lvLabel->setAlignment(TextHAlignment::LEFT);
+
+	lvLabel->setPositionX(_model->getPosition().x + 50);
+
+	this->addChild(lvLabel);
+
+
 	auto body = PhysicsBody::createEdgeBox(_model->getContentSize(), PhysicsMaterial(1, 0, 1), 1.0f);
 	body->setCategoryBitmask(DefineBitmask::Enemy);
 	body->setCollisionBitmask(DefineBitmask::Character);

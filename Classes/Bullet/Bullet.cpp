@@ -26,13 +26,12 @@ bool Bullet::init(std::string bulletName)
 	_model = Sprite::create("Bullet/" + bulletName + ".png");
 	this->addChild(_model);
 
-
 	auto body = PhysicsBody::createEdgeBox(_model->getContentSize(), PhysicsMaterial(1, 0, 1), 1.0f);
 	body->setCategoryBitmask(DefineBitmask::Bullet);
 	body->setCollisionBitmask(DefineBitmask::Character | DefineBitmask::Enemy | DefineBitmask::Wall);
-	body->setContactTestBitmask(DefineBitmask::Character | DefineBitmask::Enemy | DefineBitmask::Wall);
-	this->setPhysicsBody(body);
+	body->setContactTestBitmask(DefineBitmask::Character | DefineBitmask::Enemy);
 
+	this->setPhysicsBody(body);
 
 	auto listener = EventListenerPhysicsContact::create();
 	listener->onContactBegin = CC_CALLBACK_1(Bullet::callbackOnContactBegin, this);

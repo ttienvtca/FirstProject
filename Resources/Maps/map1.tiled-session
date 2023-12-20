@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map2.tmx",
+    "activeFile": "map1.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -76,18 +76,18 @@
                 6
             ],
             "scale": 0.5,
-            "selectedLayer": 2,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 950,
-                "y": 485
+                "x": 753,
+                "y": 483
             }
         },
         "map2.tmx": {
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 369.3333333333333,
-                "y": 475.33333333333326
+                "x": 390.66666666666663,
+                "y": 398.6666666666667
             }
         },
         "meta.tsx": {
@@ -108,9 +108,9 @@
     "project": "map1.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "map1.tmx",
         "TX Tileset Stone Ground.tsx",
         "map2.tmx",
+        "map1.tmx",
         "E:/VTCA/GD1301/Cocos2dxProject/FirstProj/Resources/Map/map-demo.tmx",
         "Demo/map-demo.tmx",
         "meta.tsx",
