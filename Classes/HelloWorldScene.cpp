@@ -121,7 +121,12 @@ void HelloWorld::onEnter()
 
 void HelloWorld::onMouseDown(EventMouse* event)
 {
-	Vec2 direction = event->getLocationInView() - _character->getPosition();
+	Vec2 camPos = Camera::getDefaultCamera()->getPosition();
+	Vec2 visibleSize = Director::getInstance()->getVisibleSize();
+
+	Vec2 mousPos = camPos - visibleSize / 2 + event->getLocationInView();
+
+	Vec2 direction = mousPos - _character->getPosition();
 	direction.normalize();
 	auto bullet = Bullet::create("1");
 

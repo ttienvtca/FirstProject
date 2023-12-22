@@ -41,6 +41,11 @@ bool Enemy::init(EntityInfo* info)
 	body->setContactTestBitmask(DefineBitmask::Character);
 	this->setPhysicsBody(body);
 
+	auto listener = EventListenerPhysicsContact::create();
+	listener->onContactBegin = CC_CALLBACK_1(Enemy::callbackOnContactBegin, this);
+
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+
 	return true;
 }
 
@@ -86,4 +91,15 @@ void Enemy::onEnter()
 	_healthCtrl->setPosition(Vec2(-_healthCtrl->getContentSize().width / 2
 		, _model->getContentSize().height));
 	this->addChild(_healthCtrl);
+}
+
+bool Enemy::callbackOnContactBegin(PhysicsContact& contact)
+{
+	auto nodeA = contact.getShapeA()->getBody()->getNode();
+	auto nodeB = contact.getShapeB()->getBody()->getNode();
+
+	if (nodeA != this && nodeB != this) return false;
+
+	log("call at enemy");
+	return false;
 }

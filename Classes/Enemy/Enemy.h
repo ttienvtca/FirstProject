@@ -20,6 +20,7 @@ protected:
 	void onDie();
 
 	void onEnter();
+	bool callbackOnContactBegin(PhysicsContact& contact);
 };
 
 #endif // !__ENEMY_H__

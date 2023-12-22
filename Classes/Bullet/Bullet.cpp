@@ -28,7 +28,7 @@ bool Bullet::init(std::string bulletName)
 
 	auto body = PhysicsBody::createEdgeBox(_model->getContentSize(), PhysicsMaterial(1, 0, 1), 1.0f);
 	body->setCategoryBitmask(DefineBitmask::Bullet);
-	body->setCollisionBitmask(DefineBitmask::Character | DefineBitmask::Enemy | DefineBitmask::Wall);
+	body->setCollisionBitmask(DefineBitmask::NON);
 	body->setContactTestBitmask(DefineBitmask::Character | DefineBitmask::Enemy);
 
 	this->setPhysicsBody(body);
@@ -45,8 +45,13 @@ bool Bullet::callbackOnContactBegin(PhysicsContact& contact)
 {
 	auto nodeA = contact.getShapeA()->getBody()->getNode();
 	auto nodeB = contact.getShapeB()->getBody()->getNode();
+	if (nodeA != this && nodeB != this) return false;
 
 	auto target = (nodeA == this) ? (nodeB) : (nodeA);
+
+	log("a: %d | b: %d", nodeA->getPhysicsBody()->getCategoryBitmask()
+		, nodeB->getPhysicsBody()->getCategoryBitmask());
+	log("a & b: %d", (nodeA->getPhysicsBody()->getCategoryBitmask() | nodeB->getPhysicsBody()->getCategoryBitmask()));
 
 	auto damageable = dynamic_cast<IDamageable*>(target);
 	if (damageable != nullptr)
