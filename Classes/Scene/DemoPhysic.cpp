@@ -9,6 +9,7 @@ bool DemoPhysic::init()
 		log("Init DemoPhysic failed!");
 		return false;
 	}
+
 	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	this->getPhysicsWorld()->setGravity(Vec2(0, -500));
 

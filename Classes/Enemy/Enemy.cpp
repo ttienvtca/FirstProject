@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "Utilities/AnimationUtils.h"
 #include "DefineBitmask.h"
+#include "DesignPattern/Observer.h"
 
 Enemy* Enemy::create(EntityInfo* info)
 {
@@ -78,6 +79,7 @@ void Enemy::onDie()
 {
 	log("die");
 	// add effects....
+	Observer::getInstance()->notify("EnemyDie", this);
 	this->removeFromParentAndCleanup(true);
 }
 

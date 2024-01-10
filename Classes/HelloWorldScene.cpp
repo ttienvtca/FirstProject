@@ -7,6 +7,7 @@
 #include "audio/include/AudioEngine.h"
 #include "Enemy/Enemy.h"
 #include "Bullet/Bullet.h"
+#include "Manager/GameManager.h"
 
 USING_NS_CC;
 
@@ -114,8 +115,11 @@ void HelloWorld::onEnter()
 	auto mapSize = _gameMap->getContentSize();
 	Rect boundingBox = { size.width / 2,size.height / 2,mapSize.width - size.width / 2 - size.width / 2,mapSize.height - size.height / 2 - size.height / 2 };
 	CameraFollow* cam = CameraFollow::create(_character, boundingBox);
-	this->addChild(cam);
 
+
+	this->addChild(GameManager::create());
+
+	this->addChild(cam);
 	this->addChild(KeyboardInput::getInstance());
 }
 
